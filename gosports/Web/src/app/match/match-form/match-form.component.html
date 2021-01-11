@@ -16,13 +16,14 @@
     </mat-form-field>
 
     <mat-radio-group
+        class="gs-form-addevent-field is-fullwidth"
         aria-labelledby="example-radio-group-label" [formControl]="teamControl">
-        <mat-radio-button [value]="data.homeTeam.id">
-            {{data.homeTeam.name}} (Home Team)
+        <mat-radio-button [value]="data.info.homeTeam.id">
+            {{data.info.homeTeam.name}} (Home Team)
         </mat-radio-button>
         <br>
-        <mat-radio-button [value]="data.awayTeam.id">
-            {{data.awayTeam.name}} (Away Team)
+        <mat-radio-button [value]="data.info.awayTeam.id">
+            {{data.info.awayTeam.name}} (Away Team)
         </mat-radio-button>
     </mat-radio-group>
 
