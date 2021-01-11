@@ -1,0 +1,11 @@
+<section class="gs-sport">
+    <p class="gs-sport-header">
+        Please choose from the following sports:
+    </p>
+    <div class="gs-sport-item" *ngFor="let s of data">
+        <button mat-flat-button color="primary" [disabled]="s.status !== 'active'" (click)="redirect(s.sportRouteName)">
+            {{s.sport}}
+            <span class="gs-sport-status" *ngIf="s.status !== 'active'">(This sport is coming soon)</span>
+        </button>
+    </div>
+</section>
