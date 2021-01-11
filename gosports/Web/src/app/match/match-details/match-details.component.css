@@ -1,0 +1,74 @@
+.gs-match-details-header {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ccc;
+    padding: 5px 10px;
+}
+
+.match-details-event-entry {
+    font-size: 14px;
+    text-align: right;
+    padding: 5px 10px;
+}
+
+.match-details-event-entry.is-hometeam {
+    text-align: left;
+}
+
+.match-details-event-entry-time {
+    color: #999;
+}
+
+.gs-match-details-body {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.gs-match-details-body-home,
+.gs-match-details-body-away {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px 10px;
+}
+
+.gs-match-details-body-away {
+    text-align: right;
+}
+
+.gs-match-details-body-status {
+    margin-top: 2px;
+    opacity: .5;
+    font-size: 11px;
+}
+
+.gs-match-details-footer {
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.gs-match-details-footer-title {
+    background-color: #ccc;
+    padding: 5px 10px;
+}
+
+.gs-match-details-footer-info {
+    padding: 10px;
+}
+
+.gs-match-details-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    z-index: 100;
+}
+
+.gs-match-details-event-empty {
+    color: red;
+    font-size: 14px;
+    padding: 15px;
+}

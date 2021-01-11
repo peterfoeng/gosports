@@ -1,0 +1,54 @@
+<section class="match-details">
+    <div class="gs-match-details-header">
+        <div class="gs-match-details-header-type">AUSTRALIA A-League</div>
+        <div class="gs-match-details-header-date">10.07.2021</div>
+    </div>
+
+    <div class="gs-match-details-body" *ngIf="data">
+        <div class="gs-match-details-body-home">
+            {{data.homeTeam.name}}
+            <div class="gs-match-details-body-status">(Home Team)</div>
+        </div>
+        <div class="gs-match-details-body-info">
+            <strong>{{data.homeTeam.score || '0'}}</strong> - <strong>{{data.awayTeam.score || '0'}}</strong>
+        </div>
+        <div class="gs-match-details-body-away">
+            {{data.awayTeam.name}}
+            <div class="gs-match-details-body-status">(Away Team)</div>
+        </div>
+    </div>
+
+    <div class="match-details-event" *ngFor="let s of data.matchEvents">
+        <button class="match-details-event-entry" [class.is-hometeam]="s.teamStatus === 'Home Team'" (click)="editEvent()">
+            {{s.eventName}} <span class="match-details-event-entry-time" *ngIf="s.eventTime">{{s.eventTime}}'</span>
+        </button>
+    </div>
+
+    <div class="gs-match-details-event-empty" *ngIf="data.matchEvents.length === 0">
+        No events recorded.
+    </div>
+
+    <div class="gs-match-details-footer">
+        <div class="gs-match-details-footer-title">Match Information</div>
+        <div class="gs-match-details-footer-info">Referee: Sacchi J. L. (Ita),
+            Venue: Gewiss Stadium (Bergamo)</div>
+    </div>
+
+    <button mat-fab [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="gs-match-details-fab">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>save</mat-icon>
+            <span>Sync Events</span>
+        </button>
+        <button mat-menu-item (click)="editEvent()">
+            <mat-icon>edit</mat-icon>
+            <span>Add Event</span>
+        </button>
+    </mat-menu>
+</section>
