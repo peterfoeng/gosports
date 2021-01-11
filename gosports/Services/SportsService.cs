@@ -1,4 +1,5 @@
-﻿using gosports.Models;
+﻿using System.Collections.Generic;
+using gosports.Models;
 using gosports.Repositories;
 
 namespace gosports.Services
@@ -7,7 +8,9 @@ namespace gosports.Services
     {
         Sports GetAll();
 
-        SportMatches GetBySport(string id);
+        List<SportMatch> GetBySport(string id);
+
+        SportMatchDetails GetByMatchId(string matchId);
     }
 
     public class SportsService : ISportsService
@@ -19,9 +22,14 @@ namespace gosports.Services
             _repository = repository;
         }
 
-        public SportMatches GetBySport(string id)
+        public List<SportMatch> GetBySport(string id)
         {
             return _repository.GetBySport(id);
+        }
+
+        public SportMatchDetails GetByMatchId(string matchId)
+        {
+            return _repository.GetMatchDetails(matchId);
         }
 
         public Sports GetAll()

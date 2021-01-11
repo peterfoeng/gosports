@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using gosports.Models;
 using gosports.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace gosports.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<SportMatches> GetById(string id)
+        public ActionResult<List<SportMatch>> GetById(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -45,6 +46,26 @@ namespace gosports.Controllers
             try
             {
                 return _service.GetBySport(id);
+            }
+            catch (Exception ex)
+            {
+                _logger.Log(LogLevel.Error, ex.ToString());
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}/{matchid}")]
+        public ActionResult<SportMatchDetails> GetByMatchById(string id, string matchid)
+        {
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(matchid))
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                return _service.GetByMatchId(matchid);
             }
             catch (Exception ex)
             {
