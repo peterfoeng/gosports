@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatchesComponent } from './matches.component';
-import { MatButtonModule } from '@angular/material/button';
 import { routing } from './matches.routing';
+import { AngularMaterialModule } from '../angular-material.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        MatButtonModule,
+        AngularMaterialModule,
         routing,
     ],
     declarations: [

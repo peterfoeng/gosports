@@ -1,10 +1,10 @@
 <section class="gs-matches">
     <p class="gs-matches-header">
-        Please choose from the following available <strong>{{data.sport.name}}</strong> matches:
+        Please choose from the following available <strong>{{sportId}}</strong> matches:
     </p>
-    <div class="gs-matches-item" *ngFor="let s of data.matches">
-        <button mat-flat-button color="primary" (click)="redirect(s.matchId)">
-            {{s.match}}
+    <div class="gs-matches-item" *ngFor="let s of data">
+        <button mat-flat-button color="primary" (click)="redirect(s.id)">
+            {{s.homeTeam.name}} vs {{s.awayTeam.name}}
         </button>
     </div>
 </section>
