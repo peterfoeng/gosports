@@ -5,27 +5,29 @@
     </div>
 
     <div class="gs-match-details-body" *ngIf="data">
-        <div class="gs-match-details-body-home">
-            {{data.homeTeam.name}}
-            <div class="gs-match-details-body-status">(Home Team)</div>
+        <div class="gs-match-details-body-head">
+            <div class="gs-match-details-body-home">
+                {{data.info?.homeTeam?.name}}
+                <div class="gs-match-details-body-status">(Home Team)</div>
+            </div>
+            <div class="gs-match-details-body-info">
+                <strong>{{data.info?.homeTeam.score || '0'}}</strong> - <strong>{{data.info?.awayTeam.score || '0'}}</strong>
+            </div>
+            <div class="gs-match-details-body-away">
+                {{data.info?.awayTeam.name}}
+                <div class="gs-match-details-body-status">(Away Team)</div>
+            </div>
         </div>
-        <div class="gs-match-details-body-info">
-            <strong>{{data.homeTeam.score || '0'}}</strong> - <strong>{{data.awayTeam.score || '0'}}</strong>
-        </div>
-        <div class="gs-match-details-body-away">
-            {{data.awayTeam.name}}
-            <div class="gs-match-details-body-status">(Away Team)</div>
-        </div>
-    </div>
 
-    <div class="match-details-event" *ngFor="let s of data.matchEvents">
-        <button class="match-details-event-entry" [class.is-hometeam]="s.teamStatus === 'Home Team'" (click)="editEvent()">
-            {{s.eventName}} <span class="match-details-event-entry-time" *ngIf="s.eventTime">{{s.eventTime}}'</span>
-        </button>
-    </div>
+        <div class="match-details-event" *ngFor="let s of data.matchDetailsEvents">
+            <button class="match-details-event-entry" [class.is-hometeam]="s.teamStatus === 'Home Team'" (click)="editEvent()">
+                {{s.eventName}} <span class="match-details-event-entry-time" *ngIf="s.eventTime">{{s.eventTime}}'</span>
+            </button>
+        </div>
 
-    <div class="gs-match-details-event-empty" *ngIf="data.matchEvents.length === 0">
-        No events recorded.
+        <div class="gs-match-details-event-empty" *ngIf="data.matchDetailsEvents?.length === 0">
+            No events recorded.
+        </div>
     </div>
 
     <div class="gs-match-details-footer">

@@ -1,12 +1,12 @@
 export interface IMatchDetails {
-    matchInfo: IMatchDetailsInfo;
-    homeTeam: IMatchDetailsTeam;
-    awayTeam: IMatchDetailsTeam;
+    info: IMatchDetailsInfo;
     events: IMatchEvents[];
-    matchEvents: IMatchDetailsEvent[];
+    matchDetailsEvents: IMatchDetailsEvent[];
 }
 
 export interface IMatchDetailsInfo {
+    homeTeam: IMatchDetailsTeam;
+    awayTeam: IMatchDetailsTeam;
     league: string;
     date: string;
     referee: string;

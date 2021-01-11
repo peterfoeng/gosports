@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatchFormComponent } from '../match-form/match-form.component';
 import { IMatchDetails } from '../match-details.model';
+import { MatchDetailsService } from "./match-details.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'app-match-details',
@@ -12,82 +14,19 @@ export class MatchDetailsComponent implements OnInit {
     public data: IMatchDetails;
 
     constructor(
-        public dialog: MatDialog
+        private activatedRoute: ActivatedRoute,
+        public dialog: MatDialog,
+        public matchDetailsService: MatchDetailsService
     ) {
     }
 
     ngOnInit(): void {
-        this.data = {
-            matchInfo: {
-                venue: '',
-                referee: '',
-                league: '',
-                date: ''
-            },
-            homeTeam: {
-                id: 'SOCCER-ALEAGUE-SYDNEYFC',
-                name: 'Sydney FC',
-                score: 0
-            },
-            awayTeam: {
-                id: 'SOCCER-ALEAGUE-SYDNEYWANDERERS',
-                name: 'Sydney Wanderers',
-                score: 0
-            },
-            events: [
-                {
-                    eventName: 'Goal',
-                    eventId: 'SOC0001',
-                },
-                {
-                    eventName: 'Free Kick',
-                    eventId: 'SOC0002',
-                },
-                {
-                    eventName: 'Throw In',
-                    eventId: 'SOC0003',
-                },
-                {
-                    eventName: 'Yellow Card',
-                    eventId: 'SOC0004',
-                },
-                {
-                    eventName: 'Red Card',
-                    eventId: 'SOC0005',
-                },
-                {
-                    eventName: 'Penalty',
-                    eventId: 'SOC0006',
-                },
-                {
-                    eventName: 'Offside',
-                    eventId: 'SOC0007',
-                }
-            ],
-            matchEvents: [
-                // {
-                //     eventId: 'ALEAGUE0001-00000001',
-                //     eventName: 'Free Kick',
-                //     teamName: 'Sydney FC',
-                //     teamStatus: 'Home Team',
-                //     eventTime: '10'
-                // },
-                // {
-                //     eventId: 'ALEAGUE0001-00000002',
-                //     eventName: 'Yellow Card',
-                //     teamName: 'Sydney FC',
-                //     teamStatus: 'Home Team',
-                //     eventTime: '15'
-                // },
-                // {
-                //     eventId: 'ALEAGUE0001-00000003',
-                //     eventName: 'Goal',
-                //     teamName: 'Sydney FC',
-                //     teamStatus: 'Away Team',
-                //     eventTime: '20'
-                // }
-            ]
-        };
+        const sportId = this.activatedRoute.snapshot.params.id;
+        const matchId = this.activatedRoute.snapshot.params.matchid;
+        this.matchDetailsService.getMatch(sportId, matchId).subscribe((r: IMatchDetails) => {
+            r.matchDetailsEvents = r.matchDetailsEvents || [];
+            this.data = r;
+        });
     }
 
     editEvent(): void {

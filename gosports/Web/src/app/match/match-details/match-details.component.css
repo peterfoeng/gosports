@@ -20,7 +20,7 @@
     color: #999;
 }
 
-.gs-match-details-body {
+.gs-match-details-body-head {
     align-items: center;
     display: flex;
     flex-flow: row nowrap;
