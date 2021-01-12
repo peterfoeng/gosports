@@ -17,9 +17,6 @@ export class MatchDetailsService {
     }
 
     saveMatch(sportId: string, matchId: string, data: IMatchDetails, username: string): Observable<any> {
-
-        console.log(sportId: string, matchId: string, data: IMatchDetails, username: string);
-
         return this.http.post<IMatchDetails>(`${this.baseUrl}api/sports/${sportId}/${matchId}`, {
             d: data,
             username
