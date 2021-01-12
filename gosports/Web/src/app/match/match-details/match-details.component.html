@@ -1,7 +1,7 @@
-<section class="match-details">
+<section class="gs-match-details">
     <div class="gs-match-details-header">
-        <div class="gs-match-details-header-type">AUSTRALIA A-League</div>
-        <div class="gs-match-details-header-date">10.07.2021</div>
+        <div class="gs-match-details-header-type">{{data?.info?.league}}</div>
+        <div class="gs-match-details-header-date">{{data?.info?.date}}</div>
     </div>
 
     <div class="gs-match-details-body" *ngIf="data">
@@ -11,17 +11,16 @@
                 <div class="gs-match-details-body-status">(Home Team)</div>
             </div>
             <div class="gs-match-details-body-info">
-                <strong>{{data.info?.homeTeam.score || '0'}}</strong> - <strong>{{data.info?.awayTeam.score || '0'}}</strong>
+                <strong>{{data.info?.homeTeamScore || '0'}}</strong> - <strong>{{data.info?.awayTeamScore || '0'}}</strong>
             </div>
             <div class="gs-match-details-body-away">
                 {{data.info?.awayTeam.name}}
                 <div class="gs-match-details-body-status">(Away Team)</div>
             </div>
         </div>
-
-        <div class="match-details-event" *ngFor="let s of data.matchDetailsEvents">
-            <button class="match-details-event-entry" [class.is-hometeam]="s.teamStatus === 'Home Team'" (click)="editEvent()">
-                {{s.eventName}} <span class="match-details-event-entry-time" *ngIf="s.eventTime">{{s.eventTime}}'</span>
+        <div class="gs-match-details-event" *ngFor="let s of data.matchDetailsEvents; let i = index">
+            <button class="gs-match-details-event-entry" mat-button [class.is-hometeam]="!s.isAwayTeam" (click)="editEvent(i)">
+                {{s.eventName}} <span class="gs-match-details-event-entry-time" *ngIf="s.eventTime">{{s.eventTime}}'</span>
             </button>
         </div>
 
@@ -32,11 +31,11 @@
 
     <div class="gs-match-details-footer">
         <div class="gs-match-details-footer-title">Match Information</div>
-        <div class="gs-match-details-footer-info">Referee: Sacchi J. L. (Ita),
-            Venue: Gewiss Stadium (Bergamo)</div>
+        <div class="gs-match-details-footer-info">Referee: {{data?.info?.referee}},
+            Venue: {{data?.info?.venue}}</div>
     </div>
 
-    <button mat-fab [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="gs-match-details-fab">
+    <button mat-fab [matMenuTriggerFor]="menu"  class="gs-match-details-fab">
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">

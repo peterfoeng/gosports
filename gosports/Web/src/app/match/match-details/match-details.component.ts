@@ -29,14 +29,17 @@ export class MatchDetailsComponent implements OnInit {
         });
     }
 
-    editEvent(): void {
+    editEvent(index?: number): void {
         const dialogRef = this.dialog.open(MatchFormComponent, {
-            data: this.data
+            width: '300px',
+            data: {
+                data: this.data,
+                index: index
+            },
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            console.log(result);
+            // if we need to do post processing
         });
     }
 }

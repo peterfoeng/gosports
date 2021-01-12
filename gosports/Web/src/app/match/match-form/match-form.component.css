@@ -1,3 +1,8 @@
 .is-fullwidth {
+    display: block;
     width: 100%;
+}
+
+.gs-form-addevent-cta {
+    margin-top: 15px;
 }
