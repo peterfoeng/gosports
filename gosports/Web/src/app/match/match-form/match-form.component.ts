@@ -59,12 +59,14 @@ export class MatchFormComponent {
         this.data.matchDetailsEvents = this.data.matchDetailsEvents || [];
         if (this.d.index >= 0) {
             this.data.matchDetailsEvents[this.d.index] = matchEvent;
+            this.data.matchDetailsEvents.sort((a, b) => +a.eventTime - +b.eventTime);
         } else {
             if (eventName === 'Goal') {
                 if (isAwayTeam) this.data.info.awayTeamScore++;
                 if (!isAwayTeam) this.data.info.homeTeamScore++;
             }
-            this.data.matchDetailsEvents.push(matchEvent);
+
+            this.data.matchDetailsEvents = [...this.data.matchDetailsEvents, matchEvent].sort((a, b) => +a.eventTime - +b.eventTime);
         }
 
         // save locally
