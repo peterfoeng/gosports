@@ -14,7 +14,6 @@ export class MatchService {
     }
 
     getMatches(sportId: string): Observable<IMatch[]> {
-        console.log(this.baseUrl);
         return this.http.get<IMatch[]>(`${this.baseUrl}api/sports/${sportId}`);
     }
 }
