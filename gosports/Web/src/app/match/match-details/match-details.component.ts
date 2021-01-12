@@ -5,6 +5,7 @@ import { IMatchDetails } from '../match-details.model';
 import { MatchDetailsService } from './match-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
+import { MatchDetailsHelpComponent } from '../match-details-help/match-details-help.component';
 
 @Component({
     selector: 'app-match-details',
@@ -48,6 +49,12 @@ export class MatchDetailsComponent implements OnInit {
             // if we need to do post processing
             this.storage.store(this.data.id, JSON.stringify(this.data));
 
+        });
+    }
+
+    openHelp(): void {
+        this.dialog.open(MatchDetailsHelpComponent, {
+            width: '300px',
         });
     }
 }
