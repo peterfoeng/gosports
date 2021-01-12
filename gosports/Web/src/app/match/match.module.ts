@@ -6,11 +6,13 @@ import { MatchFormComponent } from './match-form/match-form.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatchDetailsHelpComponent } from './match-details-help/match-details-help.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     imports: [
         CommonModule,
         AngularMaterialModule,
+        MatButtonModule,
         FormsModule, ReactiveFormsModule,
         routing,
     ],

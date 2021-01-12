@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
+        NgxWebstorageModule.forRoot(),
         CoreModule
     ],
     providers: [],
