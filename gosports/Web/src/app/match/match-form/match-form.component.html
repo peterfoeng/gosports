@@ -1,4 +1,4 @@
-<form class="gs-form-addevent" [formGroup]="options">
+<form class="gs-form-addevent" [formGroup]="formGroup">
     <h2 class="gs-form-addevent--title">Add New Event</h2>
     <mat-form-field class="gs-form-addevent-field is-fullwidth" appearance="fill">
         <mat-label>Event</mat-label>
@@ -12,7 +12,6 @@
     <mat-form-field class="gs-form-addevent-field is-fullwidth" appearance="fill">
         <mat-label>Time <small>(in minutes when the event happened)</small></mat-label>
         <input matInput type="number" placeholder="Ex. 16" [formControl]="timeControl" [value]="timeControl.value" min="10">
-        <mat-error *ngIf="timeControl.invalid">Ex. 16</mat-error>
     </mat-form-field>
 
     <mat-radio-group
@@ -28,6 +27,6 @@
     </mat-radio-group>
 
     <div class="gs-form-addevent-cta">
-        <button mat-raised-button color="primary" (click)="save()">Save</button>
+        <button mat-raised-button color="primary" [disabled]="formGroup.invalid" (click)="save()">Save</button>
     </div>
 </form>

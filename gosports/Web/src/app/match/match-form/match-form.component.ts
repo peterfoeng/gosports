@@ -9,7 +9,7 @@ import { IMatchDetails } from '../match-details.model';
     styleUrls: [ './match-form.component.css' ]
 })
 export class MatchFormComponent {
-    options: FormGroup;
+    public formGroup: FormGroup;
     public eventControl;
     public timeControl;
     public teamControl;
@@ -31,11 +31,11 @@ export class MatchFormComponent {
             teamDefaultValue = this.data.matchDetailsEvents[this.d.index].team.name;
         }
 
-        this.timeControl = new FormControl(timeDefaultValue, Validators.required);
+        this.timeControl = new FormControl(timeDefaultValue, [Validators.required, Validators.min(0)]);
         this.eventControl = new FormControl(eventDefaultValue, Validators.required);
         this.teamControl = new FormControl(teamDefaultValue, Validators.required);
 
-        this.options = fb.group({
+        this.formGroup = fb.group({
             event: this.eventControl,
             time: this.timeControl,
             team: this.teamControl
