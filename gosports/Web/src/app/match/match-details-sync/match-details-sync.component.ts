@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatchDetailsService } from '../match-details.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class MatchDetailsSyncComponent {
     }
 
     sync() {
-        this.matchDetailsService.saveMatch(this.d.sportId, this.d.matchId, this.d.data, this.usernameControl.value)._subscribe(res => {
+        this.matchDetailsService.saveMatch(this.d.sportId, this.d.matchId, this.d.data, this.usernameControl.value).subscribe(res => {
 
         });
     }
