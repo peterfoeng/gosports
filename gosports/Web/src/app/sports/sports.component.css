@@ -10,6 +10,18 @@
     margin-bottom: 10px;
 }
 
-.gs-sport-item button {
+.gs-sport-item-cta {
+    background-position: center;
+    background-size: cover;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    font-size: 22px;
+    padding: 50px 0;
     width: 100%;
+}
+
+.gs-sport-item-cta-status {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
 }

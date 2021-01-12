@@ -1,9 +1,9 @@
 <section class="gs-matches">
     <p class="gs-matches-header">
-        Please choose from the following available <strong>{{sportId}}</strong> matches:
+        Upcoming <strong>{{sportId}}</strong> matches:
     </p>
     <div class="gs-matches-item" *ngFor="let s of data">
-        <button mat-flat-button color="primary" (click)="redirect(s.id)">
+        <button class="gs-matches-item-cta" (click)="redirect(s.id)">
             {{s.homeTeam.name}} vs {{s.awayTeam.name}}
         </button>
     </div>

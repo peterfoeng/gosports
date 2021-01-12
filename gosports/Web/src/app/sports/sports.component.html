@@ -3,9 +3,11 @@
         Please choose from the following sports:
     </p>
     <div class="gs-sport-item" *ngFor="let s of data?.items">
-        <button mat-flat-button color="primary" [disabled]="s.status !== 'active'" (click)="redirect(s.routeName)">
+        <button class="gs-sport-item-cta"
+                [style.background-image]="'url(' + s.name + ')'"
+                [disabled]="s.status !== 'active'" (click)="redirect(s.routeName)">
             {{s.name}}
-            <span class="gs-sport-status" *ngIf="s.status !== 'active'">(This sport is coming soon)</span>
+            <span class="gs-sport-item-cta-status" *ngIf="s.status !== 'active'">(coming soon)</span>
         </button>
     </div>
 </section>

@@ -1,3 +1,32 @@
 .gs-sport {
+    background-image: url('src/assets/banner.png');
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
     text-align: center;
+}
+
+.gs-sport-logo {
+    position: absolute;
+    bottom: 40%;
+    right: 12.5%;
+    width: 175px;
+}
+
+.gs-sport-logo img {
+    display: block;
+    width: 100%;
+}
+
+.gs-sport-cta {
+    position: absolute;
+    bottom: 25%;
+    width: 100%;
+}
+
+.gs-sport-cta a {
+    background-color: #e46d3d;
+    color: #fff;
+    padding: 5px 0;
+    min-width: 175px;
 }

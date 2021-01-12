@@ -1,6 +1,6 @@
-<div>
-    <mat-toolbar>
-        <span>Go Sports!</span>
+<div class="app-header">
+    <mat-toolbar *ngIf="router.url !== '/'">
+        <img src="assets/gosport-icon.png">
         <span class="spacer"></span>
         <button mat-icon-button routerLink="/">
             <mat-icon>home</mat-icon>

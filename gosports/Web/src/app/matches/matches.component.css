@@ -1,7 +1,3 @@
-.gs-matches-status {
-
-}
-
 .gs-matches {
     padding: 15px;
 }
@@ -10,6 +6,12 @@
     margin-bottom: 10px;
 }
 
-.gs-matches-item button {
+.gs-matches-item-cta {
+    background-position: center;
+    background-size: cover;
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 25px 0;
     width: 100%;
 }
