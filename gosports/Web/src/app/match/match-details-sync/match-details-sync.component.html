@@ -1,4 +1,4 @@
-<form class="gs-form" [formGroup]="formGroup">
+<form class="gs-form" [formGroup]="formGroup" *ngIf="!isSubmitted">
     <h2 class="gs-form-title">Sync Events</h2>
     <p>
         Are you sure to sync events to the server?
@@ -12,3 +12,8 @@
         <button mat-raised-button color="primary" (click)="sync()" [disabled]="!formGroup.valid">Save</button>
     </div>
 </form>
+
+<div *ngIf="isSubmitted">
+    <p><strong>Match Data</strong> has been saved.</p>
+    <button mat-raised-button color="primary" (click)="close()">Close</button>
+</div>

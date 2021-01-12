@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatchFormComponent } from '../match-form/match-form.component';
 import { IMatchDetails } from '../match-details.model';
-import { MatchDetailsService } from './match-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatchDetailsHelpComponent } from '../match-details-help/match-details-help.component';
 import {MatchDetailsSyncComponent} from "../match-details-sync/match-details-sync.component";
+import {MatchDetailsService} from "../match-details.service";
 
 @Component({
     selector: 'app-match-details',
@@ -61,6 +61,11 @@ export class MatchDetailsComponent implements OnInit {
 
     syncEvent(): void {
         this.dialog.open(MatchDetailsSyncComponent, {
+            data: {
+                data: this.data,
+                sportId: this.activatedRoute.snapshot.params.id,
+                matchId: this.activatedRoute.snapshot.params.matchid,
+            },
             width: '300px',
         });
     }
