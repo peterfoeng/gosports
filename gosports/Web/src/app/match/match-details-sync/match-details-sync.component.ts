@@ -26,7 +26,7 @@ export class MatchDetailsSyncComponent {
 
     sync() {
         this.matchDetailsService.saveMatch(this.d.sportId, this.d.matchId, this.d.data, this.usernameControl.value).subscribe(res => {
-
+            this.isSubmitted = (res?.status === 'Ok');
         });
     }
 

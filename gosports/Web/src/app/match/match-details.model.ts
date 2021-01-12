@@ -37,3 +37,6 @@ export interface IMatchEvents {
     name: string;
 }
 
+export interface IMatchSyncStatus {
+    status: string;
+}

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { IMatchDetails } from './match-details.model';
+import { Observable, of } from 'rxjs';
+import { IMatchDetails, IMatchSyncStatus } from './match-details.model';
 
 @Injectable({
     providedIn: 'root'
@@ -16,10 +16,11 @@ export class MatchDetailsService {
         return this.http.get<IMatchDetails>(`${this.baseUrl}api/sports/${sportId}/${matchId}`);
     }
 
-    saveMatch(sportId: string, matchId: string, data: IMatchDetails, username: string): Observable<any> {
-        return this.http.post<IMatchDetails>(`${this.baseUrl}api/sports/${sportId}/${matchId}`, {
-            d: data,
-            username
-        });
+    saveMatch(sportId: string, matchId: string, data: IMatchDetails, username: string): Observable<IMatchSyncStatus> {
+        // return this.http.post<IMatchSyncStatus>(`${this.baseUrl}api/sports/${sportId}/${matchId}`, {
+        //     d: data,
+        //     username
+        // });
+        return of({ status: 'Ok'})
     }
 }
