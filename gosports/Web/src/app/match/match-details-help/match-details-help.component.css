@@ -1,0 +1,8 @@
+.gs-match-details-help-item {
+    display: flex;
+    align-items: center;
+}
+
+.gs-match-details-help-item .mat-icon {
+    margin-right: 10px;
+}

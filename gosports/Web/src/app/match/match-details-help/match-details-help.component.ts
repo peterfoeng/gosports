@@ -1,18 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-match-details-help',
     templateUrl: './match-details-help.component.html',
     styleUrls: [ './match-details-help.component.css' ]
 })
-export class MatchDetailsHelpComponent implements OnInit {
-    constructor(
-        public dialog: MatDialog
-    ) {
-    }
-
-    ngOnInit(): void {
-
-    }
+export class MatchDetailsHelpComponent {
 }
