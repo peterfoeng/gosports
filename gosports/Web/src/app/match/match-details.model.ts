@@ -1,10 +1,15 @@
+import { ITeam } from '../shared/team.model';
+
 export interface IMatchDetails {
+    id: string;
     info: IMatchDetailsInfo;
     events: IMatchEvents[];
     matchDetailsEvents: IMatchDetailsEvent[];
 }
 
 export interface IMatchDetailsInfo {
+    awayTeamScore: number;
+    homeTeamScore: number;
     homeTeam: IMatchDetailsTeam;
     awayTeam: IMatchDetailsTeam;
     league: string;
@@ -16,19 +21,18 @@ export interface IMatchDetailsInfo {
 export interface IMatchDetailsTeam {
     id: string;
     name: string;
-    score: number;
 }
 
 export interface IMatchDetailsEvent {
-    eventId: string;
+    id: string;
     eventName: string;
-    teamName: string;
-    teamStatus: string;
     eventTime: string;
+    team: ITeam;
+    isAwayTeam: boolean;
 }
 
 export interface IMatchEvents {
-    eventId: string;
-    eventName: string;
+    id: string;
+    name: string;
 }
 
