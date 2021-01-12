@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatchFormComponent } from '../match-form/match-form.component';
 import { IMatchDetails } from '../match-details.model';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatchDetailsHelpComponent } from '../match-details-help/match-details-help.component';
-import {MatchDetailsSyncComponent} from "../match-details-sync/match-details-sync.component";
-import {MatchDetailsService} from "../match-details.service";
+import { MatchDetailsSyncComponent } from "../match-details-sync/match-details-sync.component";
+import { MatchDetailsService } from '../match-details.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-match-details',
     templateUrl: './match-details.component.html',
     styleUrls: [ './match-details.component.css' ]
 })
-export class MatchDetailsComponent implements OnInit {
+export class MatchDetailsComponent implements OnInit, OnDestroy {
     public data: IMatchDetails;
+    public sub: Subscription;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -30,12 +32,17 @@ export class MatchDetailsComponent implements OnInit {
         const localdata = this.storage.retrieve(matchId);
 
         if (!localdata) {
-            this.data = JSON.parse(localdata);
-            this.matchDetailsService.getMatch(sportId, matchId).subscribe((r: IMatchDetails) => {
+            this.sub = this.matchDetailsService.getMatch(sportId, matchId).subscribe((r: IMatchDetails) => {
                 r.matchDetailsEvents = r.matchDetailsEvents || [];
                 this.data = r;
             });
+        } else {
+            this.data = JSON.parse(localdata);
         }
+    }
+
+    ngOnDestroy() {
+        this.sub?.unsubscribe();
     }
 
     editEvent(index?: number): void {
@@ -50,7 +57,6 @@ export class MatchDetailsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             // if we need to do post processing
             this.storage.store(this.data.id, JSON.stringify(this.data));
-
         });
     }
 
