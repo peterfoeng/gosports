@@ -27,9 +27,10 @@ export class MatchDetailsComponent implements OnInit {
     ngOnInit(): void {
         const sportId = this.activatedRoute.snapshot.params.id;
         const matchId = this.activatedRoute.snapshot.params.matchid;
-        this.data = JSON.parse(this.storage.retrieve(matchId) || '{}');
+        const localdata = this.storage.retrieve(matchId);
 
-        if (!this.data) {
+        if (!localdata) {
+            this.data = JSON.parse(localdata);
             this.matchDetailsService.getMatch(sportId, matchId).subscribe((r: IMatchDetails) => {
                 r.matchDetailsEvents = r.matchDetailsEvents || [];
                 this.data = r;
