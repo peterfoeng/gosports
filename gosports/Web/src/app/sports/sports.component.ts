@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SportsService } from './sports.service';
+import {ISports} from "./sports.model";
 
 @Component({
     selector: 'app-sports',
@@ -7,41 +9,19 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: [ './sports.component.css' ]
 })
 export class SportsComponent implements OnInit {
-    public data: any;
+    public data: ISports;
 
     constructor(
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private sportsService: SportsService
     ) {
     }
 
     ngOnInit(): void {
-        this.data = [
-            {
-                sport: '⚽ Soccer',
-                sportRouteName: 'soccer',
-                sportId: 'S1',
-                status: 'active'
-            },
-            {
-                sport: '🎾 Tennis',
-                sportRouteName: 'tennis',
-                sportId: 'T1',
-                status: 'coming-soon'
-            },
-            {
-                sport: '🏊 Swimming',
-                sportRouteName: 'swimming',
-                sportId: 'S2',
-                status: 'coming-soon'
-            },
-            {
-                sport: '🏏 Cricket',
-                sportRouteName: 'cricket',
-                sportId: 'C1',
-                status: 'coming-soon'
-            }
-        ];
+        this.sportsService.getSports().subscribe(r => {
+            this.data = r;
+        });
     }
 
     redirect(sport: string): void {
