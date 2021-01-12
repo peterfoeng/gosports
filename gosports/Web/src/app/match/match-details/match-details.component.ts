@@ -6,6 +6,7 @@ import { MatchDetailsService } from './match-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { MatchDetailsHelpComponent } from '../match-details-help/match-details-help.component';
+import {MatchDetailsSyncComponent} from "../match-details-sync/match-details-sync.component";
 
 @Component({
     selector: 'app-match-details',
@@ -54,6 +55,12 @@ export class MatchDetailsComponent implements OnInit {
 
     openHelp(): void {
         this.dialog.open(MatchDetailsHelpComponent, {
+            width: '300px',
+        });
+    }
+
+    syncEvent(): void {
+        this.dialog.open(MatchDetailsSyncComponent, {
             width: '300px',
         });
     }

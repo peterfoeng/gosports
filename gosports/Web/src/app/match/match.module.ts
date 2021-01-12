@@ -7,6 +7,7 @@ import { AngularMaterialModule } from '../angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatchDetailsHelpComponent } from './match-details-help/match-details-help.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatchDetailsSyncComponent } from './match-details-sync/match-details-sync.component';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     declarations: [
         MatchDetailsComponent,
         MatchDetailsHelpComponent,
-        MatchFormComponent
+        MatchFormComponent,
+        MatchDetailsSyncComponent
     ]
 })
 export class MatchModule { }

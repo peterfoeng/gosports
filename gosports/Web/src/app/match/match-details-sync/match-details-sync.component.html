@@ -1,0 +1,14 @@
+<form class="gs-form" [formGroup]="formGroup">
+    <h2 class="gs-form-title">Sync Events</h2>
+    <p>
+        Are you sure to sync events to the server?
+    </p>
+    <mat-form-field class="gs-form-addevent-field is-fullwidth" appearance="fill">
+        <mat-label>Your username *</mat-label>
+        <input matInput type="text" placeholder="Ex. 16" [formControl]="usernameControl" [value]="usernameControl.value">
+    </mat-form-field>
+
+    <div class="gs-form-addevent-cta">
+        <button mat-raised-button color="primary" (click)="sync()" [disabled]="!formGroup.valid">Save</button>
+    </div>
+</form>

@@ -5,6 +5,7 @@ export interface IMatchDetails {
     info: IMatchDetailsInfo;
     events: IMatchEvents[];
     matchDetailsEvents: IMatchDetailsEvent[];
+    user: string;
 }
 
 export interface IMatchDetailsInfo {
