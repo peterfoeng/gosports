@@ -35,3 +35,4 @@ Please follow below steps to run the Client side unit tests:
 
 ## Assumptions
 * There is no database involved so I made a decision to store the recorded events temporarily on localstorage. There is a SYNC button that should sync these events to the db but I mock the post response to always returns `Ok` status.
+* Made the app to suit better on mobile devices
