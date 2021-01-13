@@ -32,3 +32,6 @@ Please follow below steps to run the Client side unit tests:
 1. Navigate to Web Folder in source code path. (package.json exists here.)  
 2. Open Command Prompt in this folder.  
 3. Run this command: ng test
+
+## Assumptions
+* There is no database involved so I made a decision to store the recorded events temporarily on localstorage. There is a SYNC button that should sync these events to the db but I mock the post response to always returns `Ok` status.
